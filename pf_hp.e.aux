@@ -1,0 +1,440 @@
+--PF_HP: brute force proteinfolding in the 2D HP Model.
+--Copyright (C) 2009  Gerrit Leder
+
+--This program is free software; you can redistribute it and/or
+--modify it under the terms of the GNU General Public License
+--as published by the Free Software Foundation; either version 2
+--of the License, or (at your option) any later version.
+
+--This program is distributed in the hope that it will be useful,
+--but WITHOUT ANY WARRANTY; without even the implied warranty of
+--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--GNU General Public License for more details.
+
+--You should have received a copy of the GNU General Public License
+--along with this program; if not, write to the Free Software
+--Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+--Gerrit Leder, Washingtonring 132, 71686 Remseck-Pattonville, GERMANY
+--gerrit.leder@googlemail.com
+
+
+class PF_HP
+   --
+   -- The "Proteinfolding in HP-Model" for SmartEiffel :-)
+   --
+   -- To compile type command : compile pf.ace
+   -- Run with command : pf_hp
+   --
+   -- To compile an optimized version type : compile pf.ace -boost -O2
+   --
+   --
+   -- To produce Java bytecode : compile_to_jvm -o hello pf.ace
+   -- To run the Java bytecode : java hello
+   --
+
+create
+   make
+
+feature --Queries:
+	--	n : NONE;
+
+   grid: GRID;
+
+   seq: BIT 32;
+   strseq: STRING;
+   iseq: INTEGER;
+
+   zero, one: BOOLEAN;
+
+   fold: STRING;
+
+   folds: LINKED_LIST[STRING];
+
+   losses, indices: LINKED_LIST[INTEGER];
+	 --	indices: ARRAY[INTEGER];
+
+   i: INTEGER;
+   loss, min: INTEGER
+	 --Constructor:
+
+   make is
+      do
+
+	min:=9999
+	loss:=0
+--	io.put_string(io.last_string.is_bit.to_string);
+--	io.put_string("%N")	
+	from
+	 io.put_string("                           123456789012345%N")
+	 io.put_string ("Bitte Bitsequenz eingeben: ")
+	 io.read_line
+	until
+		(not io.last_string.is_empty) --and then io.last_string.is_bit
+	loop
+	io.put_string("%N")
+	io.put_string("Keine Bitsequenz eingegeben. Besteht nur aus 0 und 1 in beliebiger Reihenfolge!%N")
+	 io.put_string("                           123456789012345%N")
+	 io.put_string ("Bitte Bitsequenz eingeben: ")
+	 io.read_line
+	end
+	-- iseq:=io.last_integer
+	 strseq:=io.last_string
+	 create folds.make
+	 create losses.make
+	 create indices.make --from_collection(losses)
+	 create fold.make_empty--(strseq.count-1)
+	 create seq--(strseq.count)
+	 --create zero.make
+
+	zero:=False
+	one:=True
+
+
+	from
+	    i := 1
+	 until
+	    i = strseq.count
+	 loop
+	    io.put_string(i.out)
+	   io.put_string("%N")
+	   fold.append_character('N')
+	    i := i + 1
+	 end
+
+	 from
+	    i := 1
+	 until
+	    i = strseq.count+1
+	 loop
+	    io.put_string(i.out)
+	   io.put_string("%N")
+	    if strseq.item(i).is_equal('1') then
+	 	seq.put(True, i)
+	    else
+		seq.put(False, i)
+	    end
+	    i := i + 1
+	 end
+
+--	seq.put(False, 1)
+--	seq.put(True, 2)
+--	 seq.put(False, 3)
+--	 seq.put(False, 4)
+--	 seq.put(True, 5)
+--	 seq.put(False, 6)
+--	 seq.put(False, 7)
+--	 seq.put(True, 8)
+--	 seq.put(False, 9)
+--	 seq.put(False, 10)
+--	 seq.put(True, 11)
+--	 seq.put(False, 12)
+	 io.put_string(seq.out)
+	 io.put_string("%N123456789012345")
+	 io.put_string("%Nhp-sequence")
+	 --       create a.make (-11,11,-11,11);
+	 --                print_array(a);
+	 --                    a.fill_tagged_out_memory;
+	 --                a.item(line, col);
+	 --	 grid.a.set_area(n,-11,11,-11,11);
+	 --	 grid.print_grid;
+	 io.put_string("%N")
+	 io.put_string("%N")
+	 --	 io.put_integer(fold.count);
+	 --	 gen_folds (10);
+	 io.put_string(fold)
+	 io.put_string("%N12345678901234")
+	 io.put_string("%Nfirst fold")
+	 io.put_string("%N")
+
+	 gen_folds
+	 --	 grid.embedd(0, 0, seq, fold)
+	-- grid.print_grid
+	 --	 if (grid.used.has(zero)) then io.put_integer(grid.calc_losses(0, 0, fold)) end
+	 io.put_string("%N")
+	 --	print_losses;
+	 --	print_folds;
+	 --	print_indices;
+	 --------------------output:
+
+	 io.put_string("%NOptimal fold(s):")
+	 io.put_string("%N")
+	print_min_fold
+--	io.put_string("a: ")
+--	io.put_string("%N")
+--	grid.print_grid --debug
+	 -------------------------
+	 io.put_string("%N")
+	 io.put_string("%NMinimal losses: ")
+	 io.put_integer(min)
+	 io.put_string("%N%N")
+	 --	print_indices;
+	 --	grid.print_used;
+	 --
+	 --	from i:=0
+	 --	until i=100
+	 --	loop io.put_string(folds.item(i));
+	 --	io.put_string("%N");
+	 --	i:=i+1
+	 --	end
+	 --
+
+	 io.put_string(seq.out)
+	 io.put_string("%N123456789012345")
+	 io.put_string("%Nhp-sequence")
+	 --       create a.make (-11,11,-11,11);
+	 --                print_array(a);
+	 --                    a.fill_tagged_out_memory;
+	 --                a.item(line, col);
+	 --	 grid.a.set_area(n,-11,11,-11,11);
+	 --grid.print_grid;
+	 io.put_string("%N")
+	 io.put_string("%N")
+      end -- make
+
+   embedd is
+      do
+	 create grid.make(seq.count)
+--	 io.put_string ("%N")
+--	 io.put_string (seq.to_string)
+--	 io.put_string ("%N")
+	 grid.embedd(i, i, seq, fold)
+	 if grid.used.has(zero) then
+	    loss:= grid.calc_losses(i, i, fold)
+	    if loss=min then
+	      folds.extend(fold.string)
+	      losses.extend(loss)
+	    end
+	    if loss < min then
+	      create folds.make
+	      create losses.make
+	      folds.extend(fold.string)
+	      losses.extend(loss)
+	      min:=loss
+	    end
+
+
+	 end
+--	grid.print_grid
+
+      end -- embedd
+
+   gen_folds is
+      local
+	 k, j: INTEGER; c: BOOLEAN
+      do
+--	create c.make(1)
+--	create one.make(1)
+	c:= False
+--	one:=True
+	 j := 0
+--	 c.put_0(1)
+--	 one.put_1(1)
+	 from
+	    k := 0
+	 until
+	    j = 1
+	 loop
+	   from
+		k := fold.count-1
+		c:=  half_add(fold.count)
+	   until
+		k = 1
+	   loop
+		if c.is_equal(one) then
+			c:=half_add(k)
+		end
+	        k:=k-1
+	    end
+
+--	   c := half_add(11)
+--	    if c.is_equal (one) then
+--	       c := half_add(10)
+---	    end
+--	    if c.is_equal (one) then
+--	       c := half_add(9)
+--	    end
+--	    if c.is_equal (one) then
+--	       c := half_add(8)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(7)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(6)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(5)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(4)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(3)
+--	    end
+--	    if c.is_equal(one) then
+--	       c := half_add(2)
+--	    end
+	    if c.is_equal(one) then
+	       j := 1
+	    end
+	--brute force enumeration of folds:
+	   if j=0 then
+	    io.put_string(fold)
+	    io.put_string("%N")
+	    --grid.print_grid
+	    --io.put_string("%N")
+	    embedd
+	  end
+	    --grid.print_grid
+
+ --	    io.put_string("%N")
+	 end
+      end -- gen_folds
+
+   half_add(count: INTEGER): BOOLEAN is
+      local
+	 b: BOOLEAN
+      do
+	--create b.make(1)	
+	 b:=False
+	if fold.item(count) = 'N' then
+	    fold.put('E', count)
+	 --   b.put_0(1)
+	   b:=False
+	   Result := b
+	 elseif fold.item(count) = 'E' then
+	    fold.put('S', count)
+	   -- b.put_0(1)
+	   b:=False
+	    Result := b
+	 elseif fold.item(count) = 'S' then
+	    fold.put('W', count)
+	    --b.put_0(1)
+	   b:=False
+	    Result := b
+	 elseif fold.item(count) = 'W' then
+	    fold.put('N', count)
+	    --b.put_1(1)
+	    b:=True
+	    Result := b
+	 end
+      end --   gen_folds (count: INTEGER) is
+	  --	do
+	  --		if count>2 then
+	  --		  if fold.item(count)='N'then fold.put ('E',count)
+	  --		  elseif fold.item(count)='E' then fold.put ('S',count)
+	  --		  elseif fold.item(count)='S' then fold.put ('W', count)
+	  --		  end
+	  --				grid.embedd (0,0, seq, fold);
+	  --		if grid.used.has(zero) then
+	  --			folds.add_last(fold);
+	  --			losses.add_last(grid.calc_losses(0,0,fold))
+	  --		end
+	  --		  gen_folds(count-1);
+	  --	    end
+	  --		if count=2 then
+	  --		  if fold.item(count)='N'then fold.put ('E',count)
+	  --		  elseif fold.item(count)='E' then fold.put ('S',count)
+	  --		  elseif fold.item(count)='S' then fold.put ('W', count)
+	  --		grid.embedd (0,0, seq, fold);
+	  --		if grid.used.has(zero) then
+	  --			folds.add_last(fold);
+	  --			losses.add_last(grid.calc_losses(0,0,fold))
+	  --		end
+	  --		  end
+	  --		gen_folds(count-1);
+	  --		end
+	  --		if count=1 then ; end; -- oBdA. fold starts to the north
+	  --      end -- gen_fold
+
+--   print_min_fold is
+--      local
+--	 j: INTEGER
+--  -    do
+--	 min := 9999
+---	 create indices.with_capacity(0, 0)
+--	 from
+--	    j := 0
+--	 until
+--	    j = losses.count - 1 --		j=0
+--	 loop
+--	    if losses.item(j) < min then
+--	       min := losses.item(j)
+--	    end
+--	    j := j + 1
+--	    --	min:=losses.item(0)
+--	 end
+--	 from
+--	    j := 0
+--	 until
+--	    j = losses.count - 1 --		j=0
+--	 loop
+--	    if losses.item(j) = min then
+--	       indices.add_last(j)
+--	    end
+---	    j := j + 1
+---	    --	indices.add_last(0)
+--	 end
+	 ------------------
+	 --	from
+	 --		j:=0
+	 --	until
+	 --		j=indices.count-1
+	 --		j=0
+	 --	loop
+	 --	io.put_string(folds.item(indices.item(j)))
+	 --	j:=j+1;
+	 --	end
+	 -------------does the same:
+--	 indices.do_all( agent print_item(?))
+--	 --print all min folds
+--	 io.put_string("%NMinimal losses: ")
+--	 io.put_integer(min)
+--	 io.put_string("%N")
+  --    end -- print_min_fold
+
+  print_min_fold is
+  do
+    folds.do_all( agent print_item(?) )
+
+  end
+
+   print_item(item: STRING) is
+      do
+	 number := number + 1
+	 io.put_character('#')
+	 io.put_integer(number)
+	 io.put_character(' ')
+	 io.put_string(item)
+	 io.put_character('%N')
+      end -- print_item
+
+   number: INTEGER;
+
+   print_losses is
+      do
+	 io.put_string("%N")
+	 --losses.fill_tagged_out_memory
+	 --io.put_string(losses)
+	 io.put_string("%N")
+      end -- print_losses
+
+   print_folds is
+      do
+	 io.put_string("%N")
+	 --folds.fill_tagged_out_memory
+	 --io.put_string(folds.out)
+	 io.put_string("%N")
+      end -- print_folds
+
+   print_indices is
+      do
+	 io.put_string("%N")
+	-- indices.fill_tagged_out_memory
+	 --io.put_string(indices)
+	 io.put_string("%N")
+      end -- print_indices
+
+end -- class PF_HP
+

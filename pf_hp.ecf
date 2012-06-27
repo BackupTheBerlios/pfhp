@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-10-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-10-0 http://www.eiffel.com/developers/xml/configuration-1-10-0.xsd" name="pf_hp" uuid="57A4B6A1-5BBA-4858-A435-FFD9DE24D597" library_target="pf_hp">
+	<target name="pf_hp">
+		<root class="PF_HP" feature="make"/>
+		<option debug="false" warning="true" full_class_checking="true" is_attached_by_default="true" void_safety="all" syntax="provisional">
+			<debug name="__unnamed_debug__" enabled="true"/>
+			<assertions/>
+		</option>
+		<setting name="console_application" value="true"/>
+		<setting name="platform" value="windows"/>
+		<setting name="concurrency" value="scoop"/>
+		<library name="base" location="C:\Program Files\Eiffel Software\EiffelStudio 7.1 GPL\library\base\base-safe.ecf">
+			<option void_safety="all" syntax="standard">
+			</option>
+		</library>
+		<cluster name="pf_hp" location=".\" recursive="true">
+			<file_rule>
+				<exclude>/EIFGENs$</exclude>
+				<exclude>/CVS$</exclude>
+				<exclude>/.svn$</exclude>
+			</file_rule>
+		</cluster>
+	</target>
+	<target name="pf_hp_dotnet" extends="pf_hp">
+		<setting name="msil_generation" value="true"/>
+	</target>
+</system>

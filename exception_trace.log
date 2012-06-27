@@ -1,0 +1,211 @@
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+PF_HP               root's creation        Maximum SCOOP Processor Allocation reached:
+<00000000017CFEB8>                         Developer exception.          Exit
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<00000000017CFEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+PF_HP               root's creation        Maximum SCOOP Processor Allocation reached:
+<0000000001ABFEB8>                         Developer exception.          Exit
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<0000000001ABFEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        Maximum SCOOP Processor Allocation reached:
+<000000000145B028>                         Developer exception.          Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        
+<000000000145B028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    raise @11              
+<000000000145B028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+DEVELOPER_EXCEPTION raise @2                                            
+<000000000145AFA8>  (From EXCEPTION)       Routine failure.              Fail
+-------------------------------------------------------------------------------
+EXCEPTIONS          raise @3                                            
+<000000000C42E978>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   raise_scoop_exception @1
+<000000000C42E8F8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   assign_free_processor_id @3
+<000000000C42E8F8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   scoop_manager_task_callback @11
+<000000000C42E8F8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               embed @1                                            
+<0000000001F6FEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               gen_folds @15                                       
+<0000000001F6FEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               make @43                                            
+<0000000001F6FEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<0000000001F6FEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        Maximum SCOOP Processor Allocation reached:
+<00000000037EB028>                         Developer exception.          Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        
+<00000000037EB028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    raise @11              
+<00000000037EB028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+DEVELOPER_EXCEPTION raise @2                                            
+<00000000037EAFA8>  (From EXCEPTION)       Routine failure.              Fail
+-------------------------------------------------------------------------------
+EXCEPTIONS          raise @3                                            
+<000000001146E998>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   raise_scoop_exception @1
+<000000001146E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   assign_free_processor_id @3
+<000000001146E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   scoop_manager_task_callback @12
+<000000001146E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               embed @1                                            
+<00000000042FFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               gen_folds @15                                       
+<00000000042FFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               make @45                                            
+<00000000042FFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<00000000042FFEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Child thread           0x8A4 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+PF_HP               root's creation        SCOOP Processor Deadlock Detected:
+<000000000193FEB8>                         Developer exception.          Exit
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<000000000193FEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Child thread           0x300 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+PF_HP               root's creation        SCOOP Processor Deadlock Detected:
+<000000000193FEB8>                         Developer exception.          Exit
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<000000000193FEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pf_hp: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        Maximum SCOOP Processor Allocation reached:
+<00000000037CB028>                         Developer exception.          Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    developer_raise        
+<00000000037CB028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_EXCEPTION_MANAGER
+                    raise @11              
+<00000000037CB028>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+DEVELOPER_EXCEPTION raise @2                                            
+<00000000037CAFA8>  (From EXCEPTION)       Routine failure.              Fail
+-------------------------------------------------------------------------------
+EXCEPTIONS          raise @3                                            
+<000000001144E998>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   raise_scoop_exception @1
+<000000001144E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   assign_free_processor_id @3
+<000000001144E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+ISE_SCOOP_MANAGER   scoop_manager_task_callback @12
+<000000001144E918>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               embed @1                                            
+<00000000042DFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               gen_folds @15                                       
+<00000000042DFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               make @45                                            
+<00000000042DFEB8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+PF_HP               root's creation                                     
+<00000000042DFEB8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------

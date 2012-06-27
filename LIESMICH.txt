@@ -1,0 +1,7 @@
+Als Erstes eine Warnung vor dem weiterlesen: benutzen Sie PFHP mit Vorsicht!
+
+Die Software lastet mehrere CPU-Kerne voll aus und ist damit für Auslastungstests geeignet. Dieses ermöglicht auch andere Softwareprodukte, wie prime95, ...
+
+Es ist auch möglich mehrere Kerne über längere Zeit auszulasten (CPU burn in Test). Ein Abbruch ist mit der Tastenkombination CTRL-C (deutsch: STRG-C) möglich.
+
+Noch einmal: Use with caution!!!  Benutzung auf eigene Gefahr!!!
